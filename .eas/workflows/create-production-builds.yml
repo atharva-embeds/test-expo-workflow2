@@ -12,7 +12,8 @@ jobs:
       profile: development
   download_android:
     needs: [build_android]
-    type: get_build
+    type: get-build
     params:
-      buildId: ${{ needs.build_android.outputs.buildId }}
-      outputPath: bin/
+      platform: android
+      distribution: internal
+      profile: development
