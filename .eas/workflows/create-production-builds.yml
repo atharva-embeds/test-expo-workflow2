@@ -12,6 +12,7 @@ jobs:
       profile: development
   download_android:
     needs: [build_android]
-    type: run
+    type: get_build
     params:
-      command: mkdir -p bin && eas build:download ${{ needs.build_android.outputs.buildId }} --output bin/
+      buildId: ${{ needs.build_android.outputs.buildId }}
+      outputPath: bin/
