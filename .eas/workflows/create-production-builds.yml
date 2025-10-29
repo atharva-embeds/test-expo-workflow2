@@ -10,9 +10,13 @@ jobs:
     params:
       platform: android
       profile: development
-  get_build:
+  my_job:
     needs: [build_android]
-    type: get_build
-    params:
-      buildId: ${{ needs.build_android.outputs.buildId }}
-      outputPath: bin/
+    steps:
+      - uses: eas/download_build
+        id: download_build
+        with:
+          build_id: ${{ needs.build_android.outputs.build_id }}
+      - name: Print artifact path
+        run: |
+          echo "Artifact path: ${{ steps.download_build.outputs.artifact_path }}"
