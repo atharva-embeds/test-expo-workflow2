@@ -10,7 +10,7 @@ jobs:
     params:
       platform: android
       profile: development
-  download_android:
+  get_build:
     needs: [build_android]
     type: get-build
     params:
